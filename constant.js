@@ -18,4 +18,9 @@ const paymentStatus = {
   CANCELLED: "cancelled",
   REFUNDED: "refunded",
 };
-module.exports = { statusEnum, paymentMethods, paymentStatus };
+const actions = {
+  CREATE: "create",
+  UPDATE: "update",
+  DELETE: "delete",
+};
+module.exports = { statusEnum, paymentMethods, paymentStatus, actions };

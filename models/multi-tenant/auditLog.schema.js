@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Tenant = require("./tenant.schema");
-
+const { actions } = require("../../constant");
 const auditLogSchema = new mongoose.Schema(
   {
     tenantId: {
@@ -15,7 +15,7 @@ const auditLogSchema = new mongoose.Schema(
     },
     action: {
       type: String,
-      enum: ["CREATE", "UPDATE", "DELETE"],
+      enum: Object.values(actions),
       required: true,
     },
     entity: {
@@ -26,8 +26,7 @@ const auditLogSchema = new mongoose.Schema(
     before: { type: mongoose.Schema.Types.Mixed, default: null },
     after: { type: mongoose.Schema.Types.Mixed, default: null },
     metadata: {
-      ip: String,
-      userAgent: String,
+      userId: { type: mongoose.Schema.Types.ObjectId },
     },
   },
   { timestamps: true },
